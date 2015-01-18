@@ -69,6 +69,9 @@ if (Meteor.isServer) {
       html: decodeHtml(comment.body_html),
       id: comment.name,
       ups: comment.ups,
+      link: comment.link_url,
+      link_id: (comment.link_id).substring(3),
+      comment_id: comment.id,
       subreddit: comment.subreddit
     });
   };
