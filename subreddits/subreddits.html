@@ -5,8 +5,8 @@
     </div>
     <div class="panel-body">
     {{#each subredditList }}
-      <div class="btn-group btn-group-justified">
-        <a href="https://www.reddit.com/r/{{this.subreddit}}" style="color:grey;" class="btn btn-default">{{this.subreddit}} &#8212; {{this.count}}</a>
+      <div class="btn-group subreddit-button">
+        <button class="btn btn-default selected-sub" value="{{this.subreddit}}">{{this.subreddit}} &#8212; {{this.count}}</button>
       </div>
       {{/each}}
     </div>

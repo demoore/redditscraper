@@ -4,7 +4,8 @@ sexist = [
   "MensRants", "NotYourShieldProject", "WikiInAction", "KotakuInAction",
   "TheRedPill", "RedPillWomen", "trpGame", "askTRP",
   "RedPillParenting", "thankTRP", "becomeaman", "altTRP",
-  "GEOTRP", "TRPOffTopic", "redpillbooks"
+  "GEOTRP", "TRPOffTopic", "redpillbooks", "pussypass",
+  "pussypassdenied"
 ];
 
 racist = [

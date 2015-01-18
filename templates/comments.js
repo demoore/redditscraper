@@ -1,8 +1,11 @@
 if (Meteor.isClient) {
   Template.comments.helpers({
     commentList: function () {
-      if (Session.get('sexist')){
+      if (Session.get('sexist')) {
         comments = Comments.find({sexist: true});
+
+      } else if (Session.get('commentFilter')) {
+        comments = Comments.find({subreddit: Session.get('commentFilter')});
       } else {
         comments = Comments.find({});
       }

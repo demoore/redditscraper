@@ -11,6 +11,24 @@ if (Meteor.isClient) {
     }
   });
 
+  Template.subreddits.events({
+    "click .subreddit-button button": function (event) {
+      Session.set("sexist", false);
+      console.log(event.target.value);
+
+      if ( Session.get("commentFilter") == event.target.value ) {
+        Session.set("commentFilter", false);
+        $(".selected-sub-active").removeClass("selected-sub-active");
+      } else {
+        Session.set("commentFilter", event.target.value);
+        $(".selected-sub-active").removeClass("selected-sub-active");
+        $(event.target).addClass("selected-sub-active");
+      }
+
+      return false;
+    }
+  });
+
   Tracker.autorun(function () {
     Meteor.subscribe('subreddits', Session.get('userName'));
   });

@@ -3,6 +3,7 @@ if (Meteor.isClient) {
   Template.status.events({
     "change .show-sexism input": function (event) {
       Session.set('sexist', event.target.checked);
+      Session.set('commentFilter', false);
     }
   });
 
