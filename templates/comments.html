@@ -1,0 +1,24 @@
+<template name="comments">
+
+  <form class="user-input form-horizontal">
+    <fieldset>
+      <div class="form-group">
+        <button id="get-comments" type="submit" class="btn btn-primary">Get Comments</button>
+        <input type="text" name="userName" value="" id="user-name" placeholder="Reddit Username" />
+      </div>
+    </fieldset>
+  </form>
+
+  <div>
+    {{#each commentList}}
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        {{this.ups}}  {{this.subreddit}}
+      </div>
+      <div class="panel-body">
+        {{{ this.html }}}
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</template>
