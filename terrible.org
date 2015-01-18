@@ -1,4 +1,5 @@
-* Sexism
+* Subreddits
+** Sexism
 beatingwomen2
 MensRights
 MensRightsLinks
@@ -23,7 +24,7 @@ GEOTRP
 TRPOffTopic
 redpillbooks
 
-* Racism
+** Racism
 greatapes
 GreatAbos
 n1ggers
@@ -72,3 +73,13 @@ ferguson
 GoEbola
 AdviceApes
 whiterights
+* Words
+** Sexism
+cunt
+bitch
+
+** Racism
+nigger
+nigga
+chink
+spook

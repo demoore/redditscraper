@@ -79,7 +79,8 @@ if (Meteor.isServer) {
   var saveSubreddit = function ( comment ) {
     Subreddits.upsert({
       author: comment.author,
-      subreddit: comment.subreddit
+      subreddit: comment.subreddit,
+      sexist: checkForHate(comment.subreddit)
     },
                       {$inc: {count: 1}
                       });
