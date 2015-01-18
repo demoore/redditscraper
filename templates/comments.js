@@ -1,8 +1,11 @@
 if (Meteor.isClient) {
   Template.comments.helpers({
     commentList: function () {
-      comments = Comments.find({});
-      console.log(comments);
+      if (Session.get('sexist')){
+        comments = Comments.find({sexist: true});
+      } else {
+        comments = Comments.find({});
+      }
       return comments;
     }
   });

@@ -2,9 +2,9 @@
 
   {{#each commentList}}
   <div class="col-md-4">
-    <div class="panel panel-primary">
+    <div class="panel {{#if session 'sexist'}}panel-material-deep-purple{{else}}panel-primary{{/if}}">
       <div class="panel-heading">
-        {{this.ups}}<i class="mdi-navigation-arrow-drop-up mdi-material-deep-orange" style="font-size:40px;line-height:10px;"></i>{{this.subreddit}}
+        {{this.ups}}ups {{this.subreddit}}
         <span class="pull-right">&nbsp;&nbsp;&nbsp;<a style="color: #FFF;" href="https://www.reddit.com/comments/{{this.link_id}}/_/{{this.comment_id}}?context=1000">Comments</a></span>
         <span class="pull-right"><a style="color: #FFF;" href="{{this.link}}">Link</a></span>
       </div>

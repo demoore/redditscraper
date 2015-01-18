@@ -72,7 +72,8 @@ if (Meteor.isServer) {
       link: comment.link_url,
       link_id: (comment.link_id).substring(3),
       comment_id: comment.id,
-      subreddit: comment.subreddit
+      subreddit: comment.subreddit,
+      sexist: checkForHate(comment.subreddit)
     });
   };
 

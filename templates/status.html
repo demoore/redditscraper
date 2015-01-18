@@ -1,6 +1,16 @@
 <template name="status">
   <div class="well page">
     <p>Highest comment? Grossness here?</p>
-    <input type="checkbox" checked="{{showSexist}}" /> Show sexist subreddits
+    <div class="checkbox">
+      <label class="show-sexism">
+        <input type="checkbox" checked="{{showSexist}}" /> Show sexist subreddits
+      </label>
+    </div>
+    <h4>Sexism</h4>
+    <div class="progress">
+      <div class="progress-bar progress-bar-material-deep-purple" style="width: {{sexismPercent}}%"></div>
+    </div>
+    <span class="pull-right">{{#if sexismPercent}}{{sexismPercent}}%{{/if}}</span>
+    <br />
   </div>
 </template>
