@@ -5,16 +5,22 @@ if (Meteor.isServer) {
     'getComments': function(userName){
       this.unblock();
 
-      results =  HTTP.call('GET', 'https://www.reddit.com/user/' + userName + '/comments.json?limit=100');
-      saveComments(results.data.data.children);
+      results =  HTTP.call('GET',
+                           'https://www.reddit.com/user/' + userName + '/comments.json?limit=100',
+                           { headers: { 'User-Agent': 'MeteorTest/0.1 by zardoz90'} }
+                          );
+      parseData(results.data.data.children);
 
       cursor = getNextPage(results.data.data.after);
 
 
       // Keep getting comments
       while ( cursor != null) {
-        results =  HTTP.call('GET', 'https://www.reddit.com/user/' + userName + '/comments.json?limit=100&after=' + cursor);
-        saveComments(results.data.data.children);
+        results =  HTTP.call('GET',
+                             'https://www.reddit.com/user/' + userName + '/comments.json?limit=100&after=' + cursor,
+                             { headers: { 'User-Agent': 'MeteorTest/0.1 by zardoz90' } }
+                            );
+        parseData(results.data.data.children);
 
         console.log("getting more: " );
         console.log(cursor);
@@ -31,33 +37,44 @@ if (Meteor.isServer) {
     return cursor;
   };
 
-  var saveComments = function (comments) {
-    comments.forEach(function(comment){
+  var parseData = function ( comments ) {
+    comments.forEach( function ( comment ) {
       if (Comments.find({id: comment.data.name}).count()) {
-        //        console.log("Comment exists!");
+        // don't want nothin'
+        // so janky _._
       } else {
-
-        Comments.insert({
-          author: comment.data.author,
-          body: comment.data.body,
-          created: comment.data.created,
-          html: decodeHtml(comment.data.body_html),
-          id: comment.data.name,
-          ups: comment.data.ups,
-          subreddit: comment.data.subreddit
-        });
-
-        Subreddits.upsert({
-          author: comment.data.author,
-          subreddit: comment.data.subreddit
-        },
-                          {$inc: {count: 1}});
-      };
+        saveData( comment );
+      }
     });
   };
 
+  var saveData = function ( comment ) {
 
+    saveComment(comment.data);
+    saveSubreddit(comment.data);
+  };
 
+  var saveComment = function ( comment ) {
+
+    Comments.insert({
+      author: comment.author,
+      body: comment.body,
+      created: comment.created,
+      html: decodeHtml(comment.body_html),
+      id: comment.name,
+      ups: comment.ups,
+      subreddit: comment.subreddit
+    });
+  };
+
+  var saveSubreddit = function ( comment ) {
+    Subreddits.upsert({
+      author: comment.author,
+      subreddit: comment.subreddit
+    },
+                      {$inc: {count: 1}
+                      });
+  };
 
   var decodeHtml = function (html) {
     return html.replace(/&amp;/g, '&')
@@ -67,6 +84,10 @@ if (Meteor.isServer) {
       .replace(/&#039;/g, "'");
   };
 
+  var checkForHate = function (subreddit) {
+    return sexist.indexOf(subreddit) > -1;
+  };
+
   Meteor.publish('comments', function (userName) {
     return Comments.find({author: userName});
   });
@@ -74,4 +95,6 @@ if (Meteor.isServer) {
   Meteor.publish('subreddits', function(userName) {
     return Subreddits.find({author: userName});
   });
+
+
 }

@@ -1,14 +1,31 @@
 <head>
   <title>Reddit Scraper</title>
+
 </head>
 
 <body>
-  <div class="container">
-    <h1>Let's scrape some noobs!</h1>
+  <div class="container-fluid">
     <div class="row">
-      <div class="col-md-8">
+
+      <div class="jumbotron jumbotron-material-blue-grey">
+        <h1 style="color:#fff;">Reddit Scraper</h1>
+        <p class="lead" style="color:#fff;"><em><strong>TODO:</strong></em> Moar user stats, grossness tracking</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        {{> userForm}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-9">
         {{> comments }}
+      </div>
+      <div class="col-md-3">
+        {{> subreddits}}
       </div>
     </div>
   </div>
+  <script>($.material.init()) </script>
 </body>

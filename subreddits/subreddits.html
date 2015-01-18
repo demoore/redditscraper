@@ -1,7 +1,14 @@
 <template name="subreddits">
-  <div class="panel panel-info">
-    <div class="panel-title">
+  <div class="panel panel-material-pink">
+    <div class="panel-heading">
       Subreddit Post Count
+    </div>
+    <div class="panel-body">
+    {{#each subredditList }}
+      <div class="btn-group btn-group-justified">
+        <a href="https://www.reddit.com/r/{{this.subreddit}}" style="color:grey;" class="btn btn-default">{{this.subreddit}} &#8212; {{this.count}}</a>
+      </div>
+      {{/each}}
     </div>
   </div>
 </template>
