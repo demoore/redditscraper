@@ -7,7 +7,7 @@ if (Meteor.isServer) {
 
       results =  HTTP.call('GET',
                            'https://www.reddit.com/user/' + userName + '/comments.json?limit=100',
-                           { headers: { 'User-Agent': 'MeteorTest/0.1 by zardoz90'} }
+                           { headers: { 'User-Agent': 'MeteorTest/0.2 by zardoz90'} }
                           );
       parseData(results.data.data.children);
 
@@ -15,7 +15,12 @@ if (Meteor.isServer) {
 
 
       // Keep getting comments
-      while ( cursor != null) {
+      rateLimitGetNextComments( userName, cursor, results);
+    }
+  });
+
+  var getNextComments = function( userName, cursor, results ) {
+    while ( cursor != null) {
         results =  HTTP.call('GET',
                              'https://www.reddit.com/user/' + userName + '/comments.json?limit=100&after=' + cursor,
                              { headers: { 'User-Agent': 'MeteorTest/0.1 by zardoz90' } }
@@ -27,8 +32,9 @@ if (Meteor.isServer) {
 
         cursor = getNextPage(results.data.data.after);
       }
-    }
-  });
+  };
+
+  var rateLimitGetNextComments = rateLimit(getNextComments, 2000);
 
   var getNextPage = function(nextPage) {
     CommentCursor.insert({lastPage: nextPage, date_created: new Date()});
