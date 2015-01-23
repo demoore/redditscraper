@@ -1,0 +1,31 @@
+body {
+    background-color: #CFD8DC;
+}
+
+.comment-box {
+    min-height: 200px;
+    overflow: scroll;
+}
+
+.selected-sub-active {
+    background-color: orange !important;
+    color: white !important;
+    text-align:center !important;
+    width:100% !important;
+}
+
+.selected-sub {
+    color:grey !important;
+    text-align:center !important;
+    width:100% !important;
+}
+
+.subreddit-button {
+    width:100% !important;
+    text-align:center !important;
+}
+
+.jumbo-title {
+    background-color: #263238 !important;
+    
+}
