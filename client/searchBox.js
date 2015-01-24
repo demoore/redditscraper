@@ -1,13 +1,13 @@
 if (Meteor.isClient) {
   Template.searchBox.events({
-    'submit .search-form': function (event) {
+    'keypress, change .comment-search-box': _.debounce(function (event) {
       var searchTerm = document.getElementById('comment-search-box').value;
 
       Session.set('searchUsed', true);
       Session.set('commentsListUsed', false);
       Session.set('commentSearchTerm', searchTerm);
 
-      return false;
-    }
+//      return false;
+    }, 300)
   });
 }
