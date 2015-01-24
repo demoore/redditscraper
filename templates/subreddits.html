@@ -1,14 +1,14 @@
 <template name="subreddits">
   <div class="panel panel-material-pink">
-    <div class="panel-heading">
-      Subreddit Post Count
+    <div class="panel-heading text-center">
+      <span>Subreddit Comment Count &#8212; {{ commentTotal }}</span>
     </div>
     <div class="panel-body">
     {{#each subredditList }}
       <div class="btn-group subreddit-button">
         <button class="btn btn-default selected-sub" value="{{this.subreddit}}">{{this.subreddit}} &#8212; {{this.count}}</button>
       </div>
-      {{/each}}
+    {{/each}}
     </div>
   </div>
 

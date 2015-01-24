@@ -8,6 +8,10 @@ if (Meteor.isClient) {
         subreddits = Subreddits.find({}, { sort: { count: -1 }});
       }
       return subreddits;
+    },
+
+    commentTotal: function() {
+      return Comments.find({}).count();
     }
   });
 
