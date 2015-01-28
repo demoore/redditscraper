@@ -18,8 +18,12 @@ if (Meteor.isClient) {
   Template.subreddits.events({
     'click .subreddit-button button': function (event) {
       Session.set('sexist', false);
-      Session.set('searchUsed', false);
 
+      // turn below into function
+      Session.set('searchUsed', false);
+      Session.set('commentsListUsed', true);
+      //
+      
       console.log(event.target.value);
 
       if ( Session.get('commentFilter') == event.target.value ) {
