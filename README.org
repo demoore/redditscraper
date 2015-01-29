@@ -1,0 +1,13 @@
+#+TITLE: Readme
+#+Author: Dylan
+
+My girlfriend got tired of arguing with assholes on reddit. This project hopes to make it easy to screen someone before you start a discussion. Check it out at [[http://www.redditscraper.co/][redditscraper.co]].
+
+For a list of subreddits I consider sexist check out [[terrible.org][terrible.org]]
+
+*** Todo:
+- Measure racism
+- Better interface
+- Cross OS/Browser cleanup
+- favicon
+- better name

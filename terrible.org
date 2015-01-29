@@ -1,7 +1,7 @@
 #+TITLE: Terrible subreddits that terrible people frequent
 
-* Subreddits
-** Sexism
+** Subreddits
+*** Sexist
 - beatingwomen2
 - MensRights
 - MensRightsLinks
@@ -28,7 +28,7 @@
 - pussypass
 - pussypassdenied
 
-** Racism
+*** Racist
 - greatapes
 - GreatAbos
 - n1ggers
