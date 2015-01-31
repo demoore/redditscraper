@@ -1,18 +1,23 @@
 // reddit Methods go here
-
+HEADERS = { headers: { 'User-Agent': 'RedditUserScraper/0.3 by zardoz90'} };
 if (Meteor.isServer) {
   Meteor.methods({
     'getComments': function(userName){
       this.unblock();
 
+      upsertAndIncUser(userName);
+
+      // Get the inital set of comments
+      console.log("Getting comments for: " + userName);
       results =  HTTP.call('GET',
                            'https://www.reddit.com/user/' + userName + '/comments.json?limit=100',
-                           { headers: { 'User-Agent': 'MeteorTest/0.2 by zardoz90'} }
+                           HEADERS
                           );
+
+
       parseData(results.data.data.children);
 
-      cursor = getNextPage(results.data.data.after);
-
+      cursor = results.data.data.after;
 
       // Keep getting comments
       rateLimitGetNextComments( userName, cursor, results);
@@ -20,28 +25,27 @@ if (Meteor.isServer) {
   });
 
   var getNextComments = function( userName, cursor, results ) {
+    console.log("Getting logs for: " + userName + " @ " + cursor);
     while ( cursor != null) {
-        results =  HTTP.call('GET',
-                             'https://www.reddit.com/user/' + userName + '/comments.json?limit=100&after=' + cursor,
-                             { headers: { 'User-Agent': 'MeteorTest/0.1 by zardoz90' } }
-                            );
-        parseData(results.data.data.children);
+      results =  HTTP.call('GET',
+                           'https://www.reddit.com/user/' + userName + '/comments.json?limit=100&after=' + cursor,
+                           HEADERS
+                          );
+      parseData(results.data.data.children);
 
-        console.log("getting more: " );
-        console.log(cursor);
-
-        cursor = getNextPage(results.data.data.after);
-      }
+      cursor = results.data.data.after;
+    }
   };
 
   var rateLimitGetNextComments = rateLimit(getNextComments, 2000);
 
-  var getNextPage = function(nextPage) {
-    CommentCursor.insert({lastPage: nextPage, date_created: new Date()});
-    cursor = CommentCursor.findOne({}, {sort: {date_created: -1}}).lastPage;
+  // // Going to need a better solution here
+  // var getNextPage = function(nextPage, userName) {
+  //   CommentCursor.insert({lastPage: nextPage, date_created: new Date(), user: userName});
+  //   cursor = CommentCursor.findOne({user:userName}, {sort: {date_created: -1}}).lastPage;
 
-    return cursor;
-  };
+  //   return cursor;
+  // };
 
   var parseData = function ( comments ) {
     comments.forEach( function ( comment ) {
@@ -93,6 +97,15 @@ if (Meteor.isServer) {
       .replace(/&gt;/g, '>')
       .replace(/&quot;/g, '"')
       .replace(/&#039;/g, "'");
+  };
+
+  var upsertAndIncUser = function (userName) {
+    var user = UserLookups.findOne({user: userName}) || 1;
+    if (user == 1) {
+      UserLookups.insert({user: userName, count: 1});
+    } else {
+      UserLookups.update({user: userName}, {$inc: {count: 1}});
+    }
   };
 
   var checkForHate = function (subreddit) {

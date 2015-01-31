@@ -4,7 +4,7 @@ body {
 
 .comment-box {
     min-height: 200px;
-    overflow: scroll;
+    overflow: hidden;
 }
 
 .selected-sub-active {
@@ -27,4 +27,13 @@ body {
 
 .jumbo-title {
     background-color: #263238 !important;
+}
+
+#intro-container {
+    padding-top: 30%;
+}
+
+#intro-container input {
+    font-size: 80px;
+    height: 100px;
 }

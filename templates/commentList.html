@@ -1,7 +1,7 @@
 <template name="commentList">
 
   {{#each allComments}}
-  <div class="col-md-4">
+  <div class="col-md-4" id="{{this.id}}">
     <div class="panel {{#if session 'sexist'}}panel-material-deep-purple{{else}}panel-primary{{/if}}">
       <div class="panel-heading">
         {{this.ups}} <span style="font-size:16px;">|</span> {{this.subreddit}}

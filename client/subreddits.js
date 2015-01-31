@@ -23,7 +23,7 @@ if (Meteor.isClient) {
       Session.set('searchUsed', false);
       Session.set('commentsListUsed', true);
       //
-      
+
       console.log(event.target.value);
 
       if ( Session.get('commentFilter') == event.target.value ) {
