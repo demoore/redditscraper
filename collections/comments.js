@@ -1,2 +1,2 @@
 Comments = new Mongo.Collection('comments');
-CommentCursor = new Mongo.Collection('commentsCursor');
+//CommentCursor = new Mongo.Collection('commentsCursor');

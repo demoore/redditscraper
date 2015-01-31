@@ -1,11 +1,14 @@
 <template name="status">
-  <div class="well page">
-    <p>Highest comment? Grossness here?</p>
-    <div class="togglebutton">
-      <label class="show-sexism">
-        <input type="checkbox" checked="{{showSexist}}" />
-        &nbsp;&nbsp;&nbsp;Filter sexist subreddits 
-      </label>
+
+    <!-- <div class="togglebutton"> -->
+    <!--   <label class="show-sexism"> -->
+    <!--     <input type="checkbox" checked="{{showSexist}}" /> -->
+    <!--     &nbsp;&nbsp;&nbsp;Filter sexist subreddits  -->
+    <!--   </label> -->
+    <!-- </div> -->
+    <div id="comment-info">
+      <a href="#{{highestComment.id}}"><strong>Highest Comment:</strong></a> {{highestComment.ups}} <br>
+      <a href="#{{lowestComment.id}}"><strong>Lowest Comment:</strong></a> {{lowestComment.ups}}
     </div>
     <h4>Sexism</h4>
     <div class="progress">
@@ -13,5 +16,5 @@
     </div>
     <span class="pull-right">{{#if sexismPercent}}{{sexismPercent}}%{{/if}}</span>
     <br />
-  </div>
+
 </template>

@@ -16,6 +16,13 @@ if (Meteor.isClient) {
       var percentage = (sexist/allSubs * 100).toFixed(1);
 
       return percentage;
+    },
+
+    highestComment: function() {
+      return Comments.find({}, { sort: {ups: -1}}).fetch()[0];
+    },
+    lowestComment: function() {
+      return Comments.find({}, { sort: {ups: 1}}).fetch()[0];
     }
   });
 }

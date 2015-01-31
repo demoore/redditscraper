@@ -4,33 +4,16 @@
 </head>
 
 <body>
+  {{> navbar}}
   <div class="container-fluid">
     <div class="row">
-
-      <div class="jumbotron jumbo-title">
-        <h1 style="color:#fff;">Reddit Scraper</h1>
-        <p class="lead" style="color:#fff;"><em><strong>TODO:</strong></em> Moar user stats, grossness tracking, sorting</p>
+      <div class="col-lg-9">
+        <div class="col-lg-4">
+          {{> userForm}}
+        </div>
+      {{> comments}}
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        {{> searchBox}}
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-3">
-        {{> userForm}}
-      </div>
-      <div class="col-md-9">
-        {{> status}}
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-9">
-        {{> comments }}
-      </div>
-      <div class="col-md-3">
+      <div class="col-lg-3">
         {{> subreddits}}
       </div>
     </div>
