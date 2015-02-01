@@ -6,7 +6,7 @@
     <div class="panel-body">
     {{#each subredditList }}
       <div class="btn-group subreddit-button">
-        <button class="btn btn-default selected-sub" value="{{this.subreddit}}">{{this.subreddit}} &#8212; {{this.count}}</button>
+        <button class="btn btn-default {{#if this.sexist}}sexist-sub{{else}}selected-sub{{/if}}" value="{{this.subreddit}}">{{this.subreddit}} &#8212; {{this.count}}</button>
       </div>
     {{/each}}
     </div>
