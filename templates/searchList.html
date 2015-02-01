@@ -5,8 +5,8 @@
     <div class="panel {{#if session 'sexist'}}panel-material-deep-purple{{else}}panel-primary{{/if}}">
       <div class="panel-heading">
         {{this.ups}} <span style="font-size:16px;">|</span> {{this.subreddit}}
-        <span class="pull-right">&nbsp;&nbsp;&nbsp;<a style="color: #FFF;" href="https://www.reddit.com/comments/{{this.link_id}}/_/{{this.comment_id}}?context=1000">Comments</a></span>
-        <span class="pull-right"><a style="color: #FFF;" href="{{this.link}}">Link</a></span>
+        <span class="pull-right">&nbsp;&nbsp;&nbsp;<a style="color: #FFF;" target="_blank" href="https://www.reddit.com/comments/{{this.link_id}}/_/{{this.comment_id}}?context=1000">Comments</a></span>
+        <span class="pull-right"><a style="color: #FFF;" target="_blank" href="{{this.link}}">Link</a></span>
       </div>
       <div class="panel-body comment-box">
         {{{ this.html }}}
