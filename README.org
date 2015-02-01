@@ -8,6 +8,5 @@ For a list of subreddits I consider sexist check out [[terrible.org][terrible.or
 *** Todo:
 - Measure racism
 - Better interface
-- Cross OS/Browser cleanup
 - favicon
 - better name

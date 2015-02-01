@@ -1,12 +1,21 @@
 <template name="commentList">
 
   {{#each allComments}}
-  <div class="col-md-4" id="{{this.id}}">
+  <div class="col-md-12" id="{{this.id}}">
     <div class="panel {{#if session 'sexist'}}panel-material-deep-purple{{else}}panel-primary{{/if}}">
       <div class="panel-heading">
-        {{this.ups}} <span style="font-size:16px;">|</span> {{this.subreddit}}
-        <span class="pull-right">&nbsp;&nbsp;&nbsp;<a style="color: #FFF;" target="_blank" href="https://www.reddit.com/comments/{{this.link_id}}/_/{{this.comment_id}}?context=1000">Comments</a></span>
-        <span class="pull-right"><a style="color: #FFF;" target="_blank" href="{{this.link}}">Link</a></span>
+        <div class="row">
+          <div class="col-md-4">
+            {{this.ups}} <span style="font-size:16px;">|</span> {{this.subreddit}}
+          </div>
+          <div class="col-md-4 text-center">
+            <span class="center">&nbsp;&nbsp;&nbsp;<a style="color: #FFF;" target="_blank" href="https://www.reddit.com/comments/{{this.link_id}}/_/{{this.comment_id}}?context=1000">Comments</a></span><span style="font-size:16px;"> |</span>
+            <span class="text-center"><a style="color: #FFF;" target="_blank" href="{{this.link}}">Link</a></span>
+          </div>
+          <div class="col-md-4 text-right">
+            <span class="text-right">{{formatCommentDate this.created}}</span>
+          </div>
+        </div>
       </div>
       <div class="panel-body comment-box">
         {{{ this.html }}}

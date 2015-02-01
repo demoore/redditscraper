@@ -8,7 +8,7 @@ if (Meteor.isServer) {
       upsertAndIncUser(userName);
 
       // Get the inital set of comments
-      console.log("Getting comments for: " + userName);
+      console.log("[1]" + " Getting more logs for: " + userName);
 
       var results = getResults(userName, false);
       parseData(results.data.data.children);
@@ -22,7 +22,7 @@ if (Meteor.isServer) {
 
   var getNextComments = function( userName, cursor, results ) {
     var i = 2;
-    while ( cursor != null) {
+    while (cursor != null) {
       console.log("["+ i +"]" + " Getting more logs for: " + userName + " @ " + cursor);
       results =  getResults(userName, cursor);
 
