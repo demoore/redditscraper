@@ -89,7 +89,10 @@ if (Meteor.isServer) {
       link_id: (comment.link_id).substring(3),
       comment_id: comment.id,
       subreddit: comment.subreddit,
-      sexist: checkForHate(comment.subreddit)
+      hate: {
+        sexist: checkForSexism(comment.subreddit),
+        racist: checkForRacism(comment.subreddit)
+      }
     });
 
   };
@@ -99,7 +102,8 @@ if (Meteor.isServer) {
     Subreddits.upsert({
       author: comment.author,
       subreddit: comment.subreddit,
-      sexist: checkForHate(comment.subreddit)
+      sexist: checkForSexism(comment.subreddit),
+      racist: checkForRacism(comment.subreddit)
     }, {$inc: {count: 1}});
 
   };
@@ -121,8 +125,12 @@ if (Meteor.isServer) {
     }
   };
 
-  var checkForHate = function ( subreddit ) {
-    return sexist.indexOf(subreddit) > -1;
+  var checkForSexism = function ( subreddit ) {
+    return SexistSubreddits.indexOf(subreddit) > -1;
+  };
+
+  var checkForRacism = function ( subreddit ) {
+    return RacistSubreddits.indexOf(subreddit) > -1;
   };
 
   Meteor.publish('comments', function ( userName ) {

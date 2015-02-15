@@ -21,6 +21,13 @@ body {
     color: white !important;
 }
 
+.racist-sub {
+    background-color: #3F51B5 !important;
+    text-align:center !important;
+    width:100% !important;
+    color: white !important;
+}
+
 .selected-sub {
     color:grey !important;
     text-align:center !important;

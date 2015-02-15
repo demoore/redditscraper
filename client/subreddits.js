@@ -24,8 +24,6 @@ if (Meteor.isClient) {
       Session.set('commentsListUsed', true);
       //
 
-      console.log(event.target.value);
-
       if ( Session.get('commentFilter') == event.target.value ) {
         Session.set('commentFilter', false);
         $('.selected-sub-active').removeClass('selected-sub-active');

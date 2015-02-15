@@ -1,20 +1,63 @@
 <template name="status">
 
-    <!-- <div class="togglebutton"> -->
-    <!--   <label class="show-sexism"> -->
-    <!--     <input type="checkbox" checked="{{showSexist}}" /> -->
-    <!--     &nbsp;&nbsp;&nbsp;Filter sexist subreddits  -->
-    <!--   </label> -->
-    <!-- </div> -->
-    <div id="comment-info">
-      <a href="#{{highestComment.id}}"><strong>Highest Comment:</strong></a> {{highestComment.ups}} <br>
-      <a href="#{{lowestComment.id}}"><strong>Lowest Comment:</strong></a> {{lowestComment.ups}}
-    </div>
-    <h4>Sexism</h4>
-    <div class="progress">
-      <div class="progress-bar progress-bar-material-deep-purple" style="width: {{sexismPercent}}%"></div>
-    </div>
-    <span class="pull-right">{{#if sexismPercent}}{{sexismPercent}}%{{/if}}</span>
-    <br />
+  <!-- <div class="togglebutton"> -->
+  <!--   <label class="show-sexism"> -->
+  <!--     <input type="checkbox" checked="{{showSexist}}" /> -->
+  <!--     &nbsp;&nbsp;&nbsp;Filter sexist subreddits  -->
+  <!--   </label> -->
+  <!-- </div> -->
+  <div class="row">
 
+    <div class="row">
+
+      <div class="col-lg-4">
+        <div id="comment-info">
+          <a href="#{{highestComment.id}}"><strong>Highest Comment:</strong></a> {{highestComment.ups}} <br>
+          <a href="#{{lowestComment.id}}"><strong>Lowest Comment:</strong></a> {{lowestComment.ups}}
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div id="sort-selector">
+          <form class="user-input">
+            <fieldset>
+              <select class="form-control selector" placeholder="Sort comments by:">
+                <option value="Date">Date</option>
+                <option value="Highest">Highest</option>
+                <option value="Lowest">Lowest</option>
+              </select>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Here there be percentage bars -->
+    <div class="col-lg-12">
+
+      <div class="row">
+        <div class="col-lg-12">
+          <h4>Sexism</h4>
+          <div class="progress">
+            <div class="progress-bar progress-bar-material-deep-purple" style="width: {{sexismPercent}}%"></div>
+          </div>
+          <span class="pull-right">{{#if sexismPercent}}{{sexismPercent}}%{{/if}}</span>
+          <br />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <h4>Racism</h4>
+          <div class="progress">
+            <div class="progress-bar progress-bar-material-indigo" style="width: {{racismPercent}}%"></div>
+          </div>
+          <span class="pull-right">{{#if racismPercent}}{{racismPercent}}%{{/if}}</span>
+          <br />
+        </div>
+      </div>
+
+    </div>
+  </div>
 </template>

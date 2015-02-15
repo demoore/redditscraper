@@ -1,4 +1,4 @@
-sexist = [
+SexistSubreddits = [
   "beatingwomen2", "MensRights", "MensRightsLinks", "MRRef",
   "MensRightsLaw", "MRActivism", "LadyMRAs", "FeMRA",
   "MensRants", "NotYourShieldProject", "WikiInAction", "KotakuInAction",
@@ -8,7 +8,7 @@ sexist = [
   "pussypassdenied"
 ];
 
-racist = [
+RacistSubreddits = [
   "greatapes", "GreatAbos", "n1ggers", "NiggersNews", "NiggersStories",
   "Teenapers", "FunnyNiggers", "ChimpMusic", "TrayvonMartin", "NiggerVideos",
   "ShitNiggersSay", "NiggerDrama", "NiggerCartoons", "WorldStarHP",
