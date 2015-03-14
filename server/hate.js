@@ -5,7 +5,7 @@ SexistSubreddits = [
   "TheRedPill", "RedPillWomen", "trpGame", "askTRP",
   "RedPillParenting", "thankTRP", "becomeaman", "altTRP",
   "GEOTRP", "TRPOffTopic", "redpillbooks", "pussypass",
-  "pussypassdenied"
+  "pussypassdenied", "AlreadyRed", "AskTRP", "WhiteMasculinity" 
 ];
 
 RacistSubreddits = [
